@@ -1,0 +1,63 @@
+#include <iostream>
+#include <conio.h>
+int A[20][20],n,m;
+using namespace std;
+void poisk1();
+void poisk2();
+int main()
+{
+   cout<<"vvedi n,m->";
+     cin>>n>>m;
+       int i,j;
+      for(i=0; i<n; i++)
+        for(j=0; j<m; j++)
+           cin>>A[i][j];
+           poisk1();
+           poisk2();
+           getch();
+                return 0;
+}
+void poisk2()
+{
+  int max=0,simvol;
+   int i,j,t=0,k;
+
+  for(i=0; i<n; i++)
+     for(j=0; j<m; j++)
+     {
+        if(A[i][j]==A[i][j+1] && j+1<m)
+         {
+             t++;
+             k=i;
+          }
+          if(j==m-1)
+          {
+	   if(t>max)
+	   {
+	   max=t;
+	   simvol=k;
+	   t=0;
+	   }
+          }
+       }
+cout<<"max_stroka:="<< simvol << endl;
+}
+void poisk1()
+{
+  int i,j,t=0,k,r;
+  for(j=0; j<m; j++)
+     for(i=0; i<n; i++)
+      {
+          if(A[i][j]==0)
+          {
+           t++;
+            k=j;
+           }
+           if(i==n-1 && r!=k)
+           {
+           r=k;
+           cout<<"stolbce->"<< k <<endl;
+           t=0;
+           }
+       }
+}
